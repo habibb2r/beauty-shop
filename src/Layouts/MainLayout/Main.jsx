@@ -1,10 +1,10 @@
 import { Outlet } from "react-router-dom";
+import Navbar from "../SharedLayouts/Navbar/Navbar";
 
-console.log(import.meta.env.VITE_apiKey)
 const Main = () => {
     return (
         <div>
-            <h1>navbar</h1>
+            <Navbar></Navbar>
             <Outlet></Outlet>
             <h1>footer</h1>
         </div>
