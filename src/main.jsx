@@ -9,7 +9,9 @@ import AuthProvider from './Providers/AuthProvider/AuthProvider.jsx'
 createRoot(document.getElementById('root')).render(
   <StrictMode>
      <AuthProvider>
+     <div className='mx-auto'>
      <RouterProvider router={router} />
+     </div>
      </AuthProvider>
     
   </StrictMode>,
