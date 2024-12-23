@@ -1,7 +1,9 @@
+import SectionTitle from "../Reuseable/SectionTitle";
+
 const FAQ = () => {
   return (
     <div>
-      <h1 className="text-center mb-5 font-semibold">Frequently Asked Questions</h1>
+      <SectionTitle title={"Frequently Asked Questions"}></SectionTitle>
       <div className="mx-auto w-2/3">
         <div className="join join-vertical w-full">
           <div className="collapse collapse-arrow join-item border-base-300 border">

@@ -1,10 +1,11 @@
+import SectionTitle from "../Reuseable/SectionTitle";
 
 
 const ContactInfo = () => {
     
     return (
         <div>
-              <h1 className="text-center mb-5 font-semibold">Contact Information</h1>
+              <SectionTitle title={"Contact Info"}></SectionTitle>
               <div className="flex justify-center items-center gap-10">
                   <div>
                   <h1>Address</h1>

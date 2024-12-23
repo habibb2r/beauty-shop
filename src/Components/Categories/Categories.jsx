@@ -1,9 +1,10 @@
+import SectionTitle from "../Reuseable/SectionTitle";
 
 
 const Categories = () => {
     return (
         <div>
-              <h1 className="text-center mb-5 font-semibold">Categories</h1>
+              <SectionTitle title={"Categories"}></SectionTitle>
               <div className="grid grid-cols-3 gap-5">
                 <div>
                     <h1>Category</h1>
