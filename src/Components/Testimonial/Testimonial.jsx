@@ -1,28 +1,32 @@
+import { useEffect, useState } from "react";
 import SectionTitle from "../Reuseable/SectionTitle";
+import Marquee from "react-fast-marquee";
+import { Rating } from "@smastrom/react-rating";
+import "@smastrom/react-rating/style.css";
 
-
-const Testimonial = () => {
+const Testimonial = () => { const [reviews, setReviews] = useState([]);
+    useEffect(() => {
+      fetch(`${import.meta.env.VITE_backend_server}/reviews`)
+        .then((res) => res.json())
+        .then((data) => {
+          setReviews(data);
+        });
+    }, []);
     return (
-        <div>
-           <SectionTitle title={'Testimonials'}></SectionTitle>
-            <div className="grid grid-cols-3 gap-5">
-                <div className="flex flex-col justify-start items-start gap-5">
-                    <h1>Name</h1>
-                    <p>Review Description, Lorem ipsum dolor, sit amet consectetur adipisicing elit. Voluptates, quibusdam qui perferendis distinctio soluta iusto dolorem libero iure, laboriosam voluptas, cumque quia enim veniam. Quod perspiciatis repellendus nobis possimus nulla?</p>
-                    <p>Rating **</p>
-                </div>
-                <div className="flex flex-col justify-start items-start gap-5">
-                    <h1>Name</h1>
-                    <p>Review Description, Lorem ipsum dolor, sit amet consectetur adipisicing elit. Voluptates, quibusdam qui perferendis distinctio soluta iusto dolorem libero iure, laboriosam voluptas, cumque quia enim veniam. Quod perspiciatis repellendus nobis possimus nulla?</p>
-                    <p>Rating **</p>
-                </div>
-                <div className="flex flex-col justify-start items-start gap-5">
-                    <h1>Name</h1>
-                    <p>Review Description, Lorem ipsum dolor, sit amet consectetur adipisicing elit. Voluptates, quibusdam qui perferendis distinctio soluta iusto dolorem libero iure, laboriosam voluptas, cumque quia enim veniam. Quod perspiciatis repellendus nobis possimus nulla?</p>
-                    <p>Rating **</p>
+      <div className="pb-10">
+       <SectionTitle title={"Testimonials"}></SectionTitle>
+        <Marquee>
+          {reviews.map((review) => (
+            <div className="rounded-md shadow-lg shadow-accent" key={review._id} data={review}>
+                <div className="flex flex-col justify-start items-start gap-3 px-10 py-5">
+                    <h1>{review?.name}</h1>
+                    <p>{review?.comments}</p>
+                    <Rating style={{ maxWidth: 180 }} value={review?.rating} readOnly />
                 </div>
             </div>
-        </div>
+          ))}
+        </Marquee>
+      </div>
     );
 };
 
