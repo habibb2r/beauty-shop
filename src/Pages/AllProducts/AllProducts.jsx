@@ -1,12 +1,90 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
+import SectionTitle from '../../Components/Reuseable/SectionTitle';
+import useAxiosSecure from '../../Hooks/CommonHooks/useAxiosSecure';
+import { useQuery } from '@tanstack/react-query';
+
+import ProductCard from '../../Components/Reuseable/ProductCard';
 
 const AllProducts = () => {
-    return (
-        <div>
-              <h1 className="text-center mb-5 font-semibold">All Products</h1>
-            
-        </div>
-    );
+  const [filter, setFilter] = useState("All");
+  const [sort, setSort] = useState(0);
+  const [activeCategory, setActiveCategory] = useState('All');
+  const [search, setSearch] = useState('');
+
+  const axiosSecure = useAxiosSecure();
+  const { data: allItems, refetch: refetchAllItems, isLoading: loadItems } = useQuery({
+    queryKey: ["allProducts", filter, sort, search],
+    queryFn: async () => {
+      const res = await axiosSecure.get(
+        `${import.meta.env.VITE_backend_server}/allProducts/${filter}?sort=${sort}&search=${search}`
+      );
+      return res.data;
+    },
+  });
+
+  useEffect(() => {
+    refetchAllItems();
+  }, [sort, filter, search, refetchAllItems]);
+
+
+
+  const handleFilter = (e) => {
+    setFilter(e.target.value);
+    setActiveCategory(e.target.value);
+    setSearch('');
+  };
+
+  const handleSorting = (e) => {
+    const sorting = parseInt(e.target.value);
+    setSort(sorting);
+  };
+
+  const handleSubmit = (event) => {
+    event.preventDefault();
+    setSearch(event.target.elements.searchInput.value);
+  };
+
+  return (
+    <div className='px-5 pb-10'>
+      <SectionTitle title={"All Products"} />
+      <div className="flex justify-center items-center gap-5 mb-5">
+        <select onChange={handleFilter} value={activeCategory}>
+          <option value="All">All Categories</option>
+          {allItems?.uniqueProductCategories?.map((category, index) => (
+            <option key={index} value={category}>
+              {category}
+            </option>
+          ))}
+        </select>
+        <select onChange={handleSorting} value={sort}>
+          <option value="0">No Sort</option>
+          <option value="1">Price: Low to High</option>
+          <option value="-1">Price: High to Low</option>
+        </select>
+      </div>
+      <form onSubmit={handleSubmit} className="flex justify-center items-center mb-5">
+        <input
+          type="text"
+          name="searchInput"
+          placeholder="Search products..."
+          className="input input-bordered w-full max-w-xs"
+        />
+        <button type="submit" className="btn btn-primary ml-2">
+          Search
+        </button>
+      </form>
+      {
+        loadItems ? <div className='flex justify-center px-5 py-10'>
+            <span className="loading loading-spinner loading-lg text-center"></span>          
+        </div> : <div className="grid grid-cols-3 gap-5">
+        {allItems?.results?.map((product, index) => (
+          <ProductCard key={index} product={product} />
+        ))}
+      </div>
+      }
+      
+    </div>
+  );
 };
 
 export default AllProducts;

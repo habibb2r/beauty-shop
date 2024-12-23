@@ -1,9 +1,10 @@
 import React from 'react';
+import SectionTitle from '../../Components/Reuseable/SectionTitle';
 
 const About = () => {
     return (
         <div>
-              <h1 className="text-center mb-5 font-semibold">About</h1>
+              <SectionTitle title={"About"}></SectionTitle>
             
         </div>
     );

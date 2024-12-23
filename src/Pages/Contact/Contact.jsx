@@ -1,9 +1,10 @@
 import React from 'react';
+import SectionTitle from '../../Components/Reuseable/SectionTitle';
 
 const Contact = () => {
     return (
         <div>
-              <h1 className="text-center mb-5 font-semibold">Contact</h1>
+             <SectionTitle title={"Contact Us"}></SectionTitle>
             
         </div>
     );
