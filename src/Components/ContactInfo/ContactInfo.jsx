@@ -1,4 +1,4 @@
-import React from 'react';
+
 import { FaFacebookF, FaLinkedinIn } from 'react-icons/fa';
 import SectionTitle from '../Reuseable/SectionTitle';
 import { Link } from 'react-router-dom';

@@ -1,10 +1,13 @@
-import { Link, useNavigate } from "react-router-dom";
+import { Link, NavLink, useNavigate } from "react-router-dom";
 import logo from '../../../assets/logo.png'
 import { useContext } from "react";
 import { AuthContext } from "../../../Providers/AuthProvider/AuthProvider";
 import Swal from "sweetalert2";
+import useGetUserInfo from "../../../Hooks/CommonHooks/useGetUserInfo";
 const Navbar = () => {
   const { user, logOut } = useContext(AuthContext);
+  const[userInfo, refetch, isLoading] = useGetUserInfo()
+  console.log(userInfo)
   const navigate = useNavigate();
   const handleLogOut = () => {
     logOut()
@@ -27,10 +30,15 @@ const Navbar = () => {
           <img className="h-[70px]" src={logo} alt="" />
         </div>
         <div className=" flex justify-center items-center gap-5 font-semibold">
-          <Link to="/">Home</Link>
-          <Link to="/products">Products</Link>
-          <Link to="/about">About</Link>
-          <Link to="/contact">Contact</Link>
+          <NavLink className="active:border-b-2 " to="/">Home</NavLink>
+          <NavLink className="active:border-b-2 " to="/products">Products</NavLink>
+          <NavLink className="active:border-b-2 " to="/about">About</NavLink>
+          <NavLink className="active:border-b-2 " to="/contact">Contact</NavLink>
+          <NavLink className="active:border-b-2 " to="/cart">Cart</NavLink>
+          {
+            userInfo?.role === 'seller' ? <NavLink className="active:border-b-2 " to="/seller">Dashboard</NavLink> : userInfo?.role === 'admin' ? <NavLink className="active:border-b-2 " to="/admindashboard">Admin</NavLink> : <NavLink className="active:border-b-2 " to="dashboard"> Dashboard</NavLink>
+          }
+          
         </div>
         <div>
           {
