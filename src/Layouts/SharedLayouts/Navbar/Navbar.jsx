@@ -54,7 +54,7 @@ const Navbar = () => {
               Admin
             </NavLink>
           ) : (
-            <NavLink className="active:border-b-2 " to="dashboard">
+            <NavLink className="active:border-b-2 " to="/dashboard">
               {" "}
               Dashboard
             </NavLink>
