@@ -6,6 +6,7 @@ import AllProducts from "../Pages/AllProducts/AllProducts";
 import Contact from "../Pages/Contact/Contact";
 import Login from "../Pages/Accounts/Login";
 import SignUp from "../Pages/Accounts/SignUp";
+import SellerDashboard from "../Layouts/Dashboard/SellerDashboard";
 
 export const router = createBrowserRouter([
     {
@@ -39,7 +40,13 @@ export const router = createBrowserRouter([
             element: <SignUp></SignUp>
         },
         {
-            path: "/dashboard",
-            element: <
+            path: "/sellerdashboard",
+            element: <SellerDashboard></SellerDashboard>,
+            children: [
+                {
+                    path: '/sellerdashboard',
+                    element: <div>sellerdashboard</div>
+                }
+            ]
         }
   ]);

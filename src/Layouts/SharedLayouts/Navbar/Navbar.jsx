@@ -36,7 +36,7 @@ const Navbar = () => {
           <NavLink className="active:border-b-2 " to="/contact">Contact</NavLink>
           <NavLink className="active:border-b-2 " to="/cart">Cart</NavLink>
           {
-            userInfo?.role === 'seller' ? <NavLink className="active:border-b-2 " to="/seller">Dashboard</NavLink> : userInfo?.role === 'admin' ? <NavLink className="active:border-b-2 " to="/admindashboard">Admin</NavLink> : <NavLink className="active:border-b-2 " to="dashboard"> Dashboard</NavLink>
+            userInfo?.role === 'seller' ? <NavLink className="active:border-b-2 " to="/sellerdashboard">Dashboard</NavLink> : userInfo?.role === 'admin' ? <NavLink className="active:border-b-2 " to="/admindashboard">Admin</NavLink> : <NavLink className="active:border-b-2 " to="dashboard"> Dashboard</NavLink>
           }
           
         </div>
