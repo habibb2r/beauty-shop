@@ -16,7 +16,7 @@ const ProductCard = ({product}) => {
   const handleAddToCart = (item) => {
     if(userInfo?.role){
       if(userInfo?.role === 'customer'){
-
+          console.log(userInfo)
       }else{
         Swal.fire({
           position: "center",
