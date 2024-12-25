@@ -7,6 +7,7 @@ import Contact from "../Pages/Contact/Contact";
 import Login from "../Pages/Accounts/Login";
 import SignUp from "../Pages/Accounts/SignUp";
 import SellerDashboard from "../Layouts/Dashboard/SellerDashboard";
+import AdminDashboard from "../Layouts/Dashboard/AdminDashboard";
 
 export const router = createBrowserRouter([
     {
@@ -46,6 +47,16 @@ export const router = createBrowserRouter([
                 {
                     path: '/sellerdashboard',
                     element: <div>sellerdashboard</div>
+                }
+            ]
+        },
+        {
+            path: "/admindashboard",
+            element: <AdminDashboard></AdminDashboard>,
+            children: [
+                {
+                    path: '/admindashboard',
+                    element: <div>Admin dashboard</div>
                 }
             ]
         }
