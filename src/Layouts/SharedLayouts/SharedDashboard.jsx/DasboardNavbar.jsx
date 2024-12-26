@@ -8,12 +8,12 @@ const DasboardNavbar = () => {
     return <div className="loading loading-spinner loading-lg"></div>;
   }
   return (
-    <div className="">
-      <div className="">
+    <div className="w-full flex justify-center absolute bottom-[15%]">
+      <div className="fixed z-10">
         {userInfo?.role === "admin" ? (
           <>
-            <div className="w-full mx-auto flex justify-center items-center">
-              <div className="flex justify-center items-center gap-5 px-5 py-3 bg-slate-200 absolute bottom-[5%] rounded-lg">
+            <div className="w-full mx-auto flex justify-center items-center ">
+              <div className="flex justify-center items-center gap-5 px-5 py-3 bg-slate-200  rounded-lg">
                 <NavLink
                   className={({ isActive }) =>
                     `shadow-lg shadow-slate-500 rounded-md font-semibold px-4 py-3 ${
@@ -45,7 +45,7 @@ const DasboardNavbar = () => {
         ) : userInfo?.role === "seller" ? (
           <>
             <div className="w-full mx-auto flex justify-center items-center">
-              <div className="flex justify-center items-center gap-5 px-5 py-3 bg-slate-200 absolute bottom-[5%] mx-auto rounded-lg">
+              <div className="flex justify-center items-center gap-5 px-5 py-3 bg-slate-200  mx-auto rounded-lg">
                 <NavLink
                   className={({ isActive }) =>
                     `shadow-lg shadow-slate-500 rounded-md font-semibold px-4 py-3 ${
@@ -64,16 +64,6 @@ const DasboardNavbar = () => {
                   }
                 >
                   Add Item
-                </NavLink>
-                <NavLink
-                  to="/sellerdashboard/allitems"
-                  className={({ isActive }) =>
-                    `shadow-lg shadow-slate-500 rounded-md font-semibold px-4 py-3 ${
-                      isActive ? "bg-slate-800 text-white" : ""
-                    }`
-                  }
-                >
-                  All Item
                 </NavLink>
                 <NavLink
                   to="/sellerdashboard/manageitem"
@@ -97,7 +87,7 @@ const DasboardNavbar = () => {
         ) : (
           <>
             <div className="w-full mx-auto flex justify-center items-center">
-              <div className="flex justify-center items-center gap-5 px-5 py-3 bg-slate-200 absolute bottom-[5%] mx-auto rounded-lg">
+              <div className="flex justify-center items-center gap-5 px-5 py-3 bg-slate-200  mx-auto rounded-lg">
                 <NavLink
                   className={({ isActive }) =>
                     `shadow-lg shadow-slate-500 rounded-md font-semibold px-4 py-3 ${
