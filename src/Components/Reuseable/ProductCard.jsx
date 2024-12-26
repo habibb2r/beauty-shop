@@ -5,18 +5,41 @@ import cart from '../../assets/basic-icons/cart.png'
 import useGetUserInfo from '../../Hooks/CommonHooks/useGetUserInfo';
 import Swal from 'sweetalert2';
 import { useNavigate } from 'react-router-dom';
+import useAxiosSecure from '../../Hooks/CommonHooks/useAxiosSecure';
+import useGetCart from '../../Hooks/User/useGetCart';
 
 
 
 const ProductCard = ({product}) => {
   const navigate = useNavigate()
   const[userInfo, refetch, isLoading] = useGetUserInfo()
-  console.log(userInfo)
+  const axiosSecure = useAxiosSecure()
+  const [,, reloadCart] = useGetCart()
+
 
   const handleAddToCart = (item) => {
     if(userInfo?.role){
       if(userInfo?.role === 'customer'){
-          console.log(userInfo)
+          const cartData = {
+            email: userInfo.email,
+            itemId : item._id,
+            itemName: item.name,
+            itemPrice: item.price.present_price,
+            itemImage: item.picture
+          }
+          axiosSecure.post('/addToCart', cartData)
+          .then(res=>{
+            if(res.data.insertedId){
+              Swal.fire({
+                position: "center",
+                icon: "success",
+                title: "Added To Cart",
+                showConfirmButton: false,
+                timer: 2500,
+              });
+              reloadCart()
+            }
+          })
       }else{
         Swal.fire({
           position: "center",

@@ -4,10 +4,11 @@ import { useContext } from "react";
 import { AuthContext } from "../../../Providers/AuthProvider/AuthProvider";
 import Swal from "sweetalert2";
 import useGetUserInfo from "../../../Hooks/CommonHooks/useGetUserInfo";
+import useGetCart from "../../../Hooks/User/useGetCart";
 const Navbar = () => {
   const { user, logOut } = useContext(AuthContext);
   const [userInfo, refetch, isLoading] = useGetUserInfo();
-  console.log(userInfo);
+  const [cart] = useGetCart()
   const navigate = useNavigate();
   const handleLogOut = () => {
     logOut()
@@ -19,6 +20,7 @@ const Navbar = () => {
           showConfirmButton: false,
           timer: 1500,
         });
+        refetch();
         navigate("/", { replace: true });
       })
       .catch((error) => console.error(error));
@@ -42,9 +44,7 @@ const Navbar = () => {
           <NavLink className="active:border-b-2 " to="/contact">
             Contact
           </NavLink>
-          <NavLink className="active:border-b-2 " to="/cart">
-            Cart
-          </NavLink>
+         
           {userInfo?.role === "seller" ? (
             <NavLink className="active:border-b-2 " to="/sellerdashboard">
               Dashboard
@@ -53,12 +53,17 @@ const Navbar = () => {
             <NavLink className="active:border-b-2 " to="/admindashboard">
               Admin
             </NavLink>
-          ) : (
-            <NavLink className="active:border-b-2 " to="/dashboard">
+          ) : userInfo?.role === "customer" ? (
+            <div className="flex justify-center items-center gap-5">
+               <NavLink className="active:border-b-2 " to="/cart">
+            Cart <span className="font-bold px-2 text-primary border-b-4">{cart? cart.length : 0}</span>
+          </NavLink>
+          <NavLink className="active:border-b-2 " to="/dashboard">
               {" "}
               Dashboard
             </NavLink>
-          )}
+            </div>
+          ) : '' }
         </div>
         <div>
           {user ? (
