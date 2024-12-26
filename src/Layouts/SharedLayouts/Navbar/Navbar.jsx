@@ -66,6 +66,9 @@ const Navbar = () => {
           ) : '' }
         </div>
         <div>
+          {
+            isLoading ? <div className="loading loading-spinner"></div> : ''
+          }
           {user ? (
             <Link className="btn btn-error" onClick={handleLogOut}>
               Logout
