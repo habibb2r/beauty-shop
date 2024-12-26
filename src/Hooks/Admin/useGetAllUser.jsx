@@ -1,5 +1,6 @@
 import { useQuery } from '@tanstack/react-query';
-import useAxiosSecure from '../../../../Hooks/useAxiosSecure';
+import useAxiosSecure from '../CommonHooks/useAxiosSecure';
+
 
 const useGetAllUser = () => {
     const axiosSecure = useAxiosSecure()

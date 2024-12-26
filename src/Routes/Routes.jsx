@@ -15,6 +15,9 @@ import WishList from "../Pages/DashBoardPages/User/WishList/WishList";
 import AdminHome from "../Pages/DashBoardPages/Admin/AdminHome/AdminHome";
 import ManageUser from "../Pages/DashBoardPages/Admin/ManageUser/ManageUser";
 import CustomerRoute from "./CustomerRoute";
+import AddItems from "../Pages/DashBoardPages/Seller/AddItems/AddItems";
+import AllItems from "../Pages/DashBoardPages/Seller/AllItems/AllItems";
+import ManageItems from "../Pages/DashBoardPages/Seller/ManageItems/ManageItems";
 
 export const router = createBrowserRouter([
   {
@@ -53,7 +56,19 @@ export const router = createBrowserRouter([
     children: [
       {
         path: "/sellerdashboard",
-        element: <div>sellerdashboard</div>,
+        element: <SellerDashboard></SellerDashboard>,
+      },
+      {
+        path: "/sellerdashboard/additem",
+        element: <AddItems></AddItems>,
+      },
+      {
+        path: "/sellerdashboard/allitems",
+        element: <AllItems></AllItems>,
+      },
+      {
+        path: "/sellerdashboard/manageitem",
+        element: <ManageItems></ManageItems>,
       },
     ],
   },
