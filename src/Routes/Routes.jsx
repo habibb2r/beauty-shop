@@ -21,6 +21,7 @@ import ManageItems from "../Pages/DashBoardPages/Seller/ManageItems/ManageItems"
 import SellerRoute from "./SellerRoute";
 import AdminRoute from "./AdminRoute";
 import UpdateItem from "../Pages/DashBoardPages/Seller/UpdateItem/UpdateItem";
+import SellerHome from "../Pages/DashBoardPages/Seller/SellerHome/SellerHome";
 
 export const router = createBrowserRouter([
   {
@@ -59,7 +60,7 @@ export const router = createBrowserRouter([
     children: [
       {
         path: "/sellerdashboard",
-        element: <SellerDashboard></SellerDashboard>,
+        element: <SellerHome></SellerHome>,
       },
       {
         path: "/sellerdashboard/additem",
