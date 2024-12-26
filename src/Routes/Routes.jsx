@@ -20,6 +20,7 @@ import AddItems from "../Pages/DashBoardPages/Seller/AddItems/AddItems";
 import ManageItems from "../Pages/DashBoardPages/Seller/ManageItems/ManageItems";
 import SellerRoute from "./SellerRoute";
 import AdminRoute from "./AdminRoute";
+import UpdateItem from "../Pages/DashBoardPages/Seller/UpdateItem/UpdateItem";
 
 export const router = createBrowserRouter([
   {
@@ -67,6 +68,10 @@ export const router = createBrowserRouter([
       {
         path: "/sellerdashboard/manageitem",
         element: <ManageItems></ManageItems>,
+      },
+      {
+        path: "/sellerdashboard/updateitem/:id",
+        element: <UpdateItem></UpdateItem>,
       },
     ],
   },
