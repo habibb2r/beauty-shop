@@ -7,6 +7,7 @@ import Swal from 'sweetalert2';
 import { useNavigate } from 'react-router-dom';
 import useAxiosSecure from '../../Hooks/CommonHooks/useAxiosSecure';
 import useGetCart from '../../Hooks/User/useGetCart';
+import useGetWishList from '../../Hooks/User/useGetWishList';
 
 
 
@@ -15,6 +16,7 @@ const ProductCard = ({product}) => {
   const[userInfo, refetch, isLoading] = useGetUserInfo()
   const axiosSecure = useAxiosSecure()
   const [,, reloadCart] = useGetCart()
+  const [ ,, reloadWishList] = useGetWishList()
 
 
   const handleAddToCart = (item) => {
@@ -69,7 +71,26 @@ const ProductCard = ({product}) => {
   const handleAddToWishList = (item) => {
     if(userInfo?.role){
       if(userInfo?.role === 'customer'){
-
+        const wishlistData = {
+          email: userInfo.email,
+          itemId : item._id,
+          itemName: item.name,
+          itemPrice: item.price.present_price,
+          itemImage: item.picture
+        }
+        axiosSecure.post('/addToWishList', wishlistData)
+        .then(res=>{
+          if(res.data.insertedId){
+            Swal.fire({
+              position: "center",
+              icon: "success",
+              title: "Added To Wishlist!",
+              showConfirmButton: false,
+              timer: 2500,
+            });
+            reloadWishList()
+          }
+        })
       }else{
         Swal.fire({
           position: "center",

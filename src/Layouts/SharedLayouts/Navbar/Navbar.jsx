@@ -55,7 +55,7 @@ const Navbar = () => {
             </NavLink>
           ) : userInfo?.role === "customer" ? (
             <div className="flex justify-center items-center gap-5">
-               <NavLink className="active:border-b-2 " to="/cart">
+               <NavLink className="active:border-b-2 " to="/dashboard/cart">
             Cart <span className="font-bold px-2 text-primary border-b-4">{cart? cart.length : 0}</span>
           </NavLink>
           <NavLink className="active:border-b-2 " to="/dashboard">
