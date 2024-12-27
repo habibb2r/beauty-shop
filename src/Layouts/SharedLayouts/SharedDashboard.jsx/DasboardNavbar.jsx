@@ -13,10 +13,10 @@ const DasboardNavbar = () => {
         {userInfo?.role === "admin" ? (
           <>
             <div className="w-full mx-auto flex justify-center items-center ">
-              <div className="flex justify-center items-center gap-5 px-5 py-3 bg-slate-200  rounded-lg">
+              <div className="flex justify-center items-center gap-2 md:gap-5 px-2 md:px-5 py-2 md:py-3 bg-slate-200  rounded-lg">
                 <NavLink
                   className={({ isActive }) =>
-                    `shadow-lg shadow-slate-500 rounded-md font-semibold px-4 py-3 ${
+                    `shadow-lg shadow-slate-500 rounded-md font-semibold text-sm px-2 md:px-4 py-2 md:py-3 ${
                       isActive ? "bg-slate-500 text-white" : ""
                     }`
                   }
@@ -26,7 +26,7 @@ const DasboardNavbar = () => {
                 <NavLink
                   to="/admindashboard/manageuser"
                   className={({ isActive }) =>
-                    `shadow-lg shadow-slate-500 rounded-md font-semibold px-4 py-3 ${
+                    `shadow-lg shadow-slate-500 rounded-md font-semibold text-sm px-2 md:px-4 py-2 md:py-3 ${
                       isActive ? "bg-slate-800 text-white" : ""
                     }`
                   }
@@ -35,7 +35,7 @@ const DasboardNavbar = () => {
                 </NavLink>
                 <Link
                   to="/"
-                  className={`shadow-lg shadow-slate-500 rounded-md font-semibold px-4 py-3`}
+                  className={`shadow-lg shadow-slate-500 rounded-md font-semibold text-sm px-2 md:px-4 py-2 md:py-3`}
                 >
                   Website Home
                 </Link>
@@ -45,10 +45,10 @@ const DasboardNavbar = () => {
         ) : userInfo?.role === "seller" ? (
           <>
             <div className="w-full mx-auto flex justify-center items-center">
-              <div className="flex justify-center items-center gap-5 px-5 py-3 bg-slate-200  mx-auto rounded-lg">
+              <div className="flex justify-center items-center gap-2 md:gap-5 px-2 md:px-5 py-2 md:py-3 bg-slate-200  mx-auto rounded-lg">
                 <NavLink
                   className={({ isActive }) =>
-                    `shadow-lg shadow-slate-500 rounded-md font-semibold px-4 py-3 ${
+                    `shadow-lg shadow-slate-500 rounded-md font-semibold text-sm px-2 md:px-4 py-2 md:py-3 ${
                       isActive ? "bg-slate-500 text-white" : ""
                     }`
                   }
@@ -58,7 +58,7 @@ const DasboardNavbar = () => {
                 <NavLink
                   to="/sellerdashboard/additem"
                   className={({ isActive }) =>
-                    `shadow-lg shadow-slate-500 rounded-md font-semibold px-4 py-3 ${
+                    `shadow-lg shadow-slate-500 rounded-md font-semibold text-sm px-2 md:px-4 py-2 md:py-3 ${
                       isActive ? "bg-slate-800 text-white" : ""
                     }`
                   }
@@ -68,7 +68,7 @@ const DasboardNavbar = () => {
                 <NavLink
                   to="/sellerdashboard/manageitem"
                   className={({ isActive }) =>
-                    `shadow-lg shadow-slate-500 rounded-md font-semibold px-4 py-3 ${
+                    `shadow-lg shadow-slate-500 rounded-md font-semibold text-sm px-2 md:px-4 py-2 md:py-3 ${
                       isActive ? "bg-slate-800 text-white" : ""
                     }`
                   }
@@ -77,7 +77,7 @@ const DasboardNavbar = () => {
                 </NavLink>
                 <Link
                   to="/"
-                  className={`shadow-lg shadow-slate-500 rounded-md font-semibold px-4 py-3`}
+                  className={`shadow-lg shadow-slate-500 rounded-md font-semibold text-sm px-2 md:px-4 py-2 md:py-3`}
                 >
                   Website Home
                 </Link>
@@ -87,10 +87,10 @@ const DasboardNavbar = () => {
         ) : (
           <>
             <div className="w-full mx-auto flex justify-center items-center">
-              <div className="flex justify-center items-center gap-5 px-5 py-3 bg-slate-200  mx-auto rounded-lg">
+              <div className="flex justify-center items-center gap-2 md:gap-5 px-2 md:px-5 py-2 md:py-3 bg-slate-200  mx-auto rounded-lg">
                 <NavLink
                   className={({ isActive }) =>
-                    `shadow-lg shadow-slate-500 rounded-md font-semibold px-4 py-3 ${
+                    `shadow-lg shadow-slate-500 rounded-md font-semibold text-sm px-2 md:px-4 py-2 md:py-3 ${
                       isActive ? "bg-slate-500 text-white" : ""
                     }`
                   }
@@ -100,7 +100,7 @@ const DasboardNavbar = () => {
                 <NavLink
                   to="/dashboard/cart"
                   className={({ isActive }) =>
-                    `shadow-lg shadow-slate-500 rounded-md font-semibold px-4 py-3 ${
+                    `shadow-lg shadow-slate-500 rounded-md font-semibold text-sm px-2 md:px-4 py-2 md:py-3 ${
                       isActive ? "bg-slate-800 text-white" : ""
                     }`
                   }
@@ -110,7 +110,7 @@ const DasboardNavbar = () => {
                 <NavLink
                   to="/dashboard/wishlist"
                   className={({ isActive }) =>
-                    `shadow-lg shadow-slate-500 rounded-md font-semibold px-4 py-3 ${
+                    `shadow-lg shadow-slate-500 rounded-md font-semibold text-sm px-2 md:px-4 py-2 md:py-3 ${
                       isActive ? "bg-slate-800 text-white" : ""
                     }`
                   }
@@ -119,7 +119,7 @@ const DasboardNavbar = () => {
                 </NavLink>
                 <Link
                   to="/"
-                  className={`shadow-lg shadow-slate-500 rounded-md font-semibold px-4 py-3`}
+                  className={`shadow-lg shadow-slate-500 rounded-md font-semibold text-sm px-2 md:px-4 py-2 md:py-3`}
                 >
                   Website Home
                 </Link>

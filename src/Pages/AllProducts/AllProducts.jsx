@@ -47,7 +47,7 @@ const AllProducts = () => {
   return (
     <div className='px-5 pb-10'>
       <SectionTitle title={"All Products"} />
-      <div className="flex justify-center items-center gap-5 mb-5">
+      <div className="flex flex-col md:flex-row justify-center items-center gap-5 mb-5">
         <select className='select select-secondary' onChange={handleFilter} value={activeCategory}>
           <option value="All">All Categories</option>
           {allItems?.uniqueProductCategories?.map((category, index) => (
@@ -76,7 +76,7 @@ const AllProducts = () => {
       {
         loadItems ? <div className='flex justify-center px-5 py-10'>
             <span className="loading loading-spinner loading-lg text-center"></span>          
-        </div> : <div className="grid grid-cols-3 gap-5">
+        </div> : <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-5">
         {allItems?.results?.map((product, index) => (
           <ProductCard key={index} product={product} />
         ))}

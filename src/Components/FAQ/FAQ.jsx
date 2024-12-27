@@ -4,7 +4,7 @@ const FAQ = () => {
   return (
     <div>
       <SectionTitle title={"Frequently Asked Questions"}></SectionTitle>
-      <div className="mx-auto w-2/3">
+      <div className="mx-auto px-2 md:px-0 md:w-2/3">
         <div className="join join-vertical w-full">
           <div className="collapse collapse-arrow join-item border-base-300 border">
             <input type="radio" name="my-accordion-4" defaultChecked />
