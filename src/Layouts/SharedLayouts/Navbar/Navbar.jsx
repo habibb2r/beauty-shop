@@ -35,7 +35,7 @@ const Navbar = () => {
   };
   return (
     <div>
-      <div className="fixed mx-auto max-w-screen-2xl w-full bg-white bg-opacity-90 flex justify-between items-center gap-5 px-5 py-5 z-10">
+      <div className="fixed mx-auto max-w-screen-2xl w-full bg-white bg-opacity-90 flex justify-between items-center gap-5 px-3 md:px-5 py-5 z-10">
         <div>
           <img className="h-[60px] md:h-[70px]" src={logo} alt="" />
         </div>
