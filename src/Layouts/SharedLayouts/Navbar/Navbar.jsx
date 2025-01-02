@@ -43,18 +43,34 @@ const Navbar = () => {
           <img onClick={()=>setOpen(!open)} className="h-[45px]" src={open? cancelnav : navmenu} alt="" />
         </div>
         <div className={`flex justify-center items-center gap-5 font-semibold navbar-res ${open? '' : 'navbar-active'}`}>
-          <NavLink onClick={()=>setOpen(!open)} className="active:border-b-2 " to="/">
-            Home
-          </NavLink>
-          <NavLink onClick={()=>setOpen(!open)} className="active:border-b-2 " to="/products">
-            Products
-          </NavLink>
-          <NavLink onClick={()=>setOpen(!open)} className="active:border-b-2 " to="/about">
-            About
-          </NavLink>
-          <NavLink onClick={()=>setOpen(!open)} className="active:border-b-2 " to="/contact">
-            Contact
-          </NavLink>
+        <NavLink
+        onClick={() => setOpen(!open)}
+        className={({ isActive }) => isActive ? 'border-b-2 border-secondary' : ''}
+        to="/"
+      >
+        Home
+      </NavLink>
+      <NavLink
+        onClick={() => setOpen(!open)}
+        className={({ isActive }) => isActive ? 'border-b-2 border-secondary' : ''}
+        to="/products"
+      >
+        Products
+      </NavLink>
+      <NavLink
+        onClick={() => setOpen(!open)}
+        className={({ isActive }) => isActive ? 'border-b-2 border-secondary' : ''}
+        to="/about"
+      >
+        About
+      </NavLink>
+      <NavLink
+        onClick={() => setOpen(!open)}
+        className={({ isActive }) => isActive ? 'border-b-2 border-secondary' : ''}
+        to="/contact"
+      >
+        Contact
+      </NavLink>
          
           {userInfo?.role === "seller" ? (
             <NavLink onClick={()=>setOpen(!open)} className="active:border-b-2 " to="/sellerdashboard">
