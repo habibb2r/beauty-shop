@@ -48,18 +48,18 @@ const AllProducts = () => {
     <div className='px-5 pb-10'>
       <SectionTitle title={"All Products"} />
       <div className="flex flex-col md:flex-row justify-center items-center gap-5 mb-5">
-        <select className='select select-secondary' onChange={handleFilter} value={activeCategory}>
-          <option value="All">All Categories</option>
+        <select className='select select-secondary font-semibold' onChange={handleFilter} value={activeCategory}>
+          <option className='font-semibold bg-pink-200' value="All">All Categories</option>
           {allItems?.uniqueProductCategories?.map((category, index) => (
-            <option key={index} value={category}>
+            <option className='font-semibold bg-pink-200' key={index} value={category}>
               {category}
             </option>
           ))}
         </select>
-        <select className='select select-secondary' onChange={handleSorting} value={sort}>
-          <option value="0">Sort</option>
-          <option value="1">Price: Low to High</option>
-          <option value="-1">Price: High to Low</option>
+        <select className='select select-secondary font-semibold' onChange={handleSorting} value={sort}>
+          <option className='font-semibold' value="0">Sort</option>
+          <option className='font-semibold' value="1">Price: Low to High</option>
+          <option className='font-semibold' value="-1">Price: High to Low</option>
         </select>
       </div>
       <form onSubmit={handleSubmit} className="flex justify-center items-center mb-5">

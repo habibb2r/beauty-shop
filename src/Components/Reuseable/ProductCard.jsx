@@ -122,21 +122,21 @@ const ProductCard = ({product}) => {
     return (
         <div className="flex flex-col justify-start items-start gap-3 rounded-lg shadow-md shadow-secondary px-5 py-5 bg-slate-100 relative">
             <div className="w-full flex justify-center">
-            <img className="h-[300px]" src={product?.picture} alt={product?.name} />
+            <img className="h-[300px] rounded-md " src={product?.picture} alt={product?.name} />
             </div>
-            <h3 className="font-semibold text-xl">{product?.name}</h3>
-            <p className="font-thin">{product?.description}</p>
-            <p className="font-semibold">Brand: {product?.brand}</p>
+            <h3 className="font-semibold text-xl overflow-ellipsis overflow-hidden whitespace-nowrap w-[90%]">{product?.name}</h3>
+            <p className="overflow-ellipsis overflow-hidden whitespace-nowrap w-[90%]">{product?.description}</p>
+            <p className="">Brand: <span className='font-bold'>{product?.brand}</span></p>
             <p className="text-primary absolute px-3 py-2 bg-white rounded-lg font-semibold bottom-[50%] right-[22%] shadow-lg">
                ${product?.price?.present_price}
               {product?.price?.onOffer && (
                 <span className="line-through px-2 text-error"> ${product?.price?.previous_price}</span>
               )}
             </p>
-            <p>Category: <span className="font-semibold">{product?.category}</span></p>
-            <div className='flex justify-between items-center w-full gap-5 px-[5%] bg-white py-[3%] shadow-lg rounded-xl'>
-              <button onClick={()=>handleAddToWishList(product)}><img className='h-[50px]   ' src={wish} alt="Wish List" /></button>
-              <button onClick={()=>handleAddToCart(product)}><img className='h-[50px]  ' src={cart} alt="Add to Cart" /></button>
+            <p>Category: <span className="font-bold">{product?.category}</span></p>
+            <div className='flex justify-between items-center w-full gap-5 px-[5%] py-[3%]'>
+              <button className='px-[2%] py-[2%] bg-white rounded-3xl shadow-2xl shadow-primary' onClick={()=>handleAddToWishList(product)}><img className='h-[50px]   ' src={wish} alt="Wish List" /></button>
+              <button className='px-[2%] py-[2%] bg-white rounded-3xl shadow-2xl shadow-primary' onClick={()=>handleAddToCart(product)}><img className='h-[50px]  ' src={cart} alt="Add to Cart" /></button>
             </div>
           </div>
     );
