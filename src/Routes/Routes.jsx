@@ -22,6 +22,7 @@ import SellerRoute from "./SellerRoute";
 import AdminRoute from "./AdminRoute";
 import UpdateItem from "../Pages/DashBoardPages/Seller/UpdateItem/UpdateItem";
 import SellerHome from "../Pages/DashBoardPages/Seller/SellerHome/SellerHome";
+import ProductDetails from "../Pages/ProductDetails/ProductDetails";
 
 export const router = createBrowserRouter([
   {
@@ -43,6 +44,10 @@ export const router = createBrowserRouter([
       {
         path: "/contact",
         element: <Contact></Contact>,
+      },
+      {
+        path: "/productdetails/:id",
+        element: <ProductDetails></ProductDetails>,
       },
     ],
   },

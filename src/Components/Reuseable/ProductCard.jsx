@@ -4,7 +4,7 @@ import wish from '../../assets/basic-icons/wishlist.png'
 import cart from '../../assets/basic-icons/cart.png'
 import useGetUserInfo from '../../Hooks/CommonHooks/useGetUserInfo';
 import Swal from 'sweetalert2';
-import { useNavigate } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import useAxiosSecure from '../../Hooks/CommonHooks/useAxiosSecure';
 import useGetCart from '../../Hooks/User/useGetCart';
 import useGetWishList from '../../Hooks/User/useGetWishList';
@@ -130,7 +130,7 @@ const ProductCard = ({product}) => {
               )}
             </p>
             </div>
-            <h3 className="font-semibold text-xl overflow-ellipsis overflow-hidden md:whitespace-nowrap w-[90%]">{product?.name}</h3>
+            <Link to={`/productdetails/${product?._id}`} className="font-semibold text-xl overflow-ellipsis overflow-hidden md:whitespace-nowrap w-[90%]">{product?.name}</Link>
             <p className="overflow-ellipsis overflow-hidden md:whitespace-nowrap  w-[90%]">{product?.description}</p>
             <p className="">Brand: <span className='font-bold'>{product?.brand}</span></p>
             
