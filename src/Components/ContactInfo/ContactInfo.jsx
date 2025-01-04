@@ -25,14 +25,6 @@ const ContactInfo = () => {
           </ul>
         </div>
       </div>
-      <div className="flex justify-center items-center gap-4 mt-6">
-        <a href="https://www.facebook.com" target="_blank" rel="noopener noreferrer" className="bg-blue-600 text-white p-2 rounded-full hover:bg-blue-700 transition-colors">
-          <FaFacebookF size={24} />
-        </a>
-        <a href="https://www.linkedin.com" target="_blank" rel="noopener noreferrer" className="bg-blue-500 text-white p-2 rounded-full hover:bg-blue-600 transition-colors">
-          <FaLinkedinIn size={24} />
-        </a>
-      </div>
     </div>
   );
 };

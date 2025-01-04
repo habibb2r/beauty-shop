@@ -67,7 +67,7 @@ const AllProducts = () => {
           type="text"
           name="searchInput"
           placeholder="Search products..."
-          className="input input-bordered w-full max-w-xs"
+          className="input input-bordered input-primary w-full max-w-xs"
         />
         <button type="submit" className="btn btn-primary ml-2">
           Search

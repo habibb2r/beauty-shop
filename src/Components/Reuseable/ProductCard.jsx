@@ -123,7 +123,7 @@ const ProductCard = ({product}) => {
         <div className="flex flex-col justify-start items-start gap-3 rounded-lg shadow-md shadow-secondary px-5 py-5 bg-slate-100 ">
             <div className="md:w-full flex justify-center relative">
             <img className="h-[300px] rounded-md " src={product?.picture} alt={product?.name} />
-            <p className="text-primary absolute px-3 py-2 bg-white rounded-lg font-semibold bottom-[50%] right-[22%] shadow-lg">
+            <p className="text-primary absolute px-3 py-2 bg-white rounded-lg font-semibold bottom-[20%] right-[15%] shadow-lg">
                ${product?.price?.present_price}
               {product?.price?.onOffer && (
                 <span className="line-through px-2 text-error"> ${product?.price?.previous_price}</span>
