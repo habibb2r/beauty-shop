@@ -3,12 +3,16 @@ import useProductDetails from "../../Hooks/CommonHooks/useProductDetails";
 import { Rating } from "@smastrom/react-rating";
 import { IoPeople } from "react-icons/io5";
 import { BsFillBookmarkHeartFill } from "react-icons/bs";
+import { CiSquareMinus, CiSquarePlus } from "react-icons/ci";
+import { useState } from "react";
 
 const ProductDetails = () => {
   const itemId = useParams();
   console.log(itemId.id);
+  const [quantity, setQuantity] = useState(0);
   const [details, itemRefetch, isLoading] = useProductDetails(itemId.id);
   console.log(details);
+
   return (
     <div className="pt-[3%]">
       <h1 className="text-3xl text-center font-semibold">Product Details</h1>
@@ -48,6 +52,13 @@ const ProductDetails = () => {
 
             <div className="flex items-center gap-5">
             <BsFillBookmarkHeartFill className="text-3xl text-red-600" />
+            <div className="flex items-center gap-2 px-3 py-2 rounded-md shadow-md border-2">
+            <CiSquarePlus className="text-3xl font-semibold" />
+            <div className="border-x-2 px-2">
+            <p className="text-xl">{quantity}</p>
+            </div>
+            <CiSquareMinus className="text-3xl font-semibold" />
+            </div>
             </div>
             <h1 className="font-bold">Description</h1>
             <p>{details?.description}</p>
