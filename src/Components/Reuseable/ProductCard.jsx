@@ -8,7 +8,8 @@ import { Link, useNavigate } from 'react-router-dom';
 import useAxiosSecure from '../../Hooks/CommonHooks/useAxiosSecure';
 import useGetCart from '../../Hooks/User/useGetCart';
 import useGetWishList from '../../Hooks/User/useGetWishList';
-
+import { Rating } from '@smastrom/react-rating';
+import { IoPeople } from "react-icons/io5";
 
 
 const ProductCard = ({product}) => {
@@ -131,6 +132,13 @@ const ProductCard = ({product}) => {
             </p>
             </div>
             <Link to={`/productdetails/${product?._id}`} className="font-semibold text-xl overflow-ellipsis overflow-hidden md:whitespace-nowrap w-[90%]">{product?.name}</Link>
+              <div className='flex items-center gap-3'>
+              <Rating style={{ maxWidth: 100 }} value={product?.rating} readOnly />
+              <div className='flex items-center'>
+              <IoPeople className='text-xl' />
+              <p>(<span className='font-bold'>{product?.total_rated}</span>)</p>
+              </div>
+              </div>
             <p className="overflow-ellipsis overflow-hidden md:whitespace-nowrap  w-[90%]">{product?.description}</p>
             <p className="">Brand: <span className='font-bold'>{product?.brand}</span></p>
             
