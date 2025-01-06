@@ -10,6 +10,7 @@ import useGetCart from '../../Hooks/User/useGetCart';
 import useGetWishList from '../../Hooks/User/useGetWishList';
 import { Rating } from '@smastrom/react-rating';
 import { IoPeople } from "react-icons/io5";
+import { BsBookmarkHeart } from 'react-icons/bs';
 
 
 const ProductCard = ({product}) => {
@@ -144,8 +145,8 @@ const ProductCard = ({product}) => {
             
             <p>Category: <span className="font-bold">{product?.category}</span></p>
             <div className='flex justify-between items-center w-full gap-5 px-[5%] py-[3%]'>
-              <button className='px-[2%] py-[2%] bg-white rounded-3xl shadow-2xl shadow-primary' onClick={()=>handleAddToWishList(product)}><img className='h-[50px]   ' src={wish} alt="Wish List" /></button>
-              <button className='px-[2%] py-[2%] bg-white rounded-3xl shadow-2xl shadow-primary' onClick={()=>handleAddToCart(product)}><img className='h-[50px]  ' src={cart} alt="Add to Cart" /></button>
+              <button className='px-[2%] py-[2%] bg-white rounded-3xl shadow-2xl shadow-primary' onClick={()=>handleAddToWishList(product)}><BsBookmarkHeart className='text-4xl text-red-600' /></button>
+              <button className='px-[3%] py-[2%] bg-green-300 font-semibold rounded-2xl shadow-md shadow-primary' onClick={()=>handleAddToCart(product)}>Add to Cart</button>
             </div>
           </div>
     );

@@ -12,11 +12,22 @@ import copylink from '../../assets/basic-icons/copy-link.png'
 const ProductDetails = () => {
   const itemId = useParams();
   console.log(itemId.id);
-  const [quantity, setQuantity] = useState(0);
+  const [quantity, setQuantity] = useState(1);
   const [details, itemRefetch, isLoading] = useProductDetails(itemId.id);
   const productUrl = window.location.href;
   console.log(details);
-
+  const handleAddToCart = (item)=>{
+    if(item.stock < quantity){
+      Swal.fire({
+        position: "center",
+        icon: "error",
+        title: "Out of Stock",
+        text: `Please select quantity less than ${item.stock}`,
+        showConfirmButton: false,
+        timer: 1500,
+      });
+    }
+  }
   const shareOnFacebook = () => {
     const facebookUrl = `https://www.facebook.com/sharer/sharer.php?u=${encodeURIComponent(productUrl)}`;
     window.open(facebookUrl, '_blank');
@@ -96,14 +107,15 @@ const shareOnWhatsApp = () => {
             <div className="flex items-center gap-5">
             <BsFillBookmarkHeartFill className="text-3xl text-red-600" />
             <div className="flex items-center gap-2 px-3 py-2 rounded-md shadow-md border-2">
-            <CiSquarePlus className="text-3xl font-semibold" />
-            <div className="border-x-2 px-2">
-            <p className="text-xl">{quantity}</p>
+            <CiSquareMinus onClick={()=>setQuantity(quantity-1)} className="text-3xl font-semibold" />
+            <div className="border-x-2 px-4">
+            <p className="text-xl select-none">{quantity}</p>
             </div>
-            <CiSquareMinus className="text-3xl font-semibold" />
+            <CiSquarePlus onClick={()=>setQuantity(quantity+1)} className="text-3xl font-semibold" />
+          
             </div>
             <div>
-              <button className="px-3 py-2 rounded-xl shadow-lg bg-green-400 font-bold">Add To Cart</button>
+              <button onClick={()=>handleAddToCart(details)} className="select-none px-3 py-2 rounded-xl shadow-lg bg-green-400 font-bold">Add To Cart</button>
             </div>
             </div>
             <div className="flex items-center gap-5 py-[2%]">
@@ -123,9 +135,11 @@ const shareOnWhatsApp = () => {
           <p className="text-justify px-[2%]">{details?.description}</p>
         </div>
         <div>
-          <h1>Reviews</h1>
+        <h1 className="text-2xl font-semibold border-b-2 w-[60%] pb-2">Reviews</h1>
           <div>
-
+            {
+              details?.reviews?.length > 0  ? ' ' : <h1>No Reviews Yet</h1>
+            }
           </div>
         </div>
       </div>
