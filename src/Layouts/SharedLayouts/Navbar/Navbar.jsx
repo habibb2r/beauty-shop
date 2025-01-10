@@ -6,7 +6,7 @@ import Swal from "sweetalert2";
 import useGetUserInfo from "../../../Hooks/CommonHooks/useGetUserInfo";
 import useGetCart from "../../../Hooks/User/useGetCart";
 import './Navbar.css'
-
+import { motion } from "motion/react"
 import navmenu from '../../../assets/basic-icons/categories.png'
 import cancelnav from '../../../assets/basic-icons/close.png'
 
@@ -100,7 +100,7 @@ const Navbar = () => {
               Logout
             </Link>
           ) : (
-            <Link onClick={()=>setOpen(!open)} className="btn btn-secondary" to="/login">
+            <Link onClick={()=>setOpen(!open)} className="px-3 py-2 text-white bg-blue-900 font-semibold" to="/login">
               Login
             </Link>
           )}
@@ -111,13 +111,15 @@ const Navbar = () => {
             isLoading ? <div className="loading loading-spinner"></div> : ''
           }
           {user ? (
-            <Link className="btn btn-error" onClick={handleLogOut}>
+            <motion.button initial={{backgroundColor: '#db0000'}} animate={{backgroundColor: '#940000'}} transition={{duration: 3, delay: 0.5, repeat: Infinity, repeatType: 'reverse', ease: 'easeInOut'}} className="px-4 py-2 text-white bg-red-900 font-semibold rounded-xl" onClick={handleLogOut}>
               Logout
-            </Link>
+            </motion.button>
           ) : (
-            <Link className="btn btn-secondary" to="/login">
+            <motion.div initial={{ boxShadow: '0 -5px 10px #002fff'  }} animate={{ boxShadow: '0 10px 10px #d70000' }} transition={{ duration: 3, delay: 0.5, repeat: Infinity, repeatType: 'reverse', ease: 'easeInOut' }}>
+              <Link className="px-5 py-3 text-white bg-blue-900 font-semibold rounded-xl shadow-md" to="/login">
               Login
             </Link>
+            </motion.div>
           )}
         </div>
       </div>

@@ -17,59 +17,11 @@ const ProductCard = ({product}) => {
   const navigate = useNavigate()
   const[userInfo, refetch, isLoading] = useGetUserInfo()
   const axiosSecure = useAxiosSecure()
-  const [,, reloadCart] = useGetCart()
+  
   const [ ,, reloadWishList] = useGetWishList()
 
 
-  const handleAddToCart = (item) => {
-    if(userInfo?.role){
-      if(userInfo?.role === 'customer'){
-          const cartData = {
-            email: userInfo.email,
-            itemId : item._id,
-            itemName: item.name,
-            itemPrice: item.price.present_price,
-            itemImage: item.picture
-          }
-          axiosSecure.post('/addToCart', cartData)
-          .then(res=>{
-            if(res.data.insertedId){
-              Swal.fire({
-                position: "center",
-                icon: "success",
-                title: "Added To Cart",
-                showConfirmButton: false,
-                timer: 2500,
-              });
-              reloadCart()
-            }
-          })
-      }else{
-        Swal.fire({
-          position: "center",
-          icon: "error",
-          title: "Admin and Seller Cannot Add To Cart",
-          showConfirmButton: false,
-          timer: 2500,
-        });
-      }
-    }else{
-      Swal.fire({
-        title: "Login Required",
-        text: "You need to login first!",
-        icon: "error",
-        showCancelButton: true,
-        confirmButtonColor: "#3085d6",
-        cancelButtonColor: "#d33",
-        confirmButtonText: "Login"
-      }).then((result) => {
-        if (result.isConfirmed) {
-          navigate('/login', { replace: true });
-        }
-      });
-    }
-    console.log(item)
-  }
+ 
   const handleAddToWishList = (item) => {
     if(userInfo?.role){
       if(userInfo?.role === 'customer'){
@@ -146,7 +98,7 @@ const ProductCard = ({product}) => {
             <p>Category: <span className="font-bold">{product?.category}</span></p>
             <div className='flex justify-between items-center w-full gap-5 px-[5%] py-[3%]'>
               <button className='px-[2%] py-[2%] bg-white rounded-3xl shadow-2xl shadow-primary' onClick={()=>handleAddToWishList(product)}><BsBookmarkHeart className='text-4xl text-red-600' /></button>
-              <button className='px-[3%] py-[2%] bg-green-300 font-semibold rounded-2xl shadow-md shadow-primary' onClick={()=>handleAddToCart(product)}>Add to Cart</button>
+              <Link to={`/productdetails/${product?._id}`} className='px-[3%] py-[2%] bg-green-300 font-semibold rounded-2xl shadow-md shadow-primary'>Buy Now</Link>
             </div>
           </div>
     );

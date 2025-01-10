@@ -1,4 +1,4 @@
-import { useParams } from "react-router-dom";
+import { useNavigate, useParams } from "react-router-dom";
 import useProductDetails from "../../Hooks/CommonHooks/useProductDetails";
 import { Rating } from "@smastrom/react-rating";
 import { IoPeople } from "react-icons/io5";
@@ -9,14 +9,34 @@ import Swal from "sweetalert2";
 import facebook from '../../assets/basic-icons/facebook.png'
 import whatsapp from '../../assets/basic-icons/whatsapp.png'
 import copylink from '../../assets/basic-icons/copy-link.png'
+import useGetCart from "../../Hooks/User/useGetCart";
+import useAxiosSecure from "../../Hooks/CommonHooks/useAxiosSecure";
+import useGetUserInfo from "../../Hooks/CommonHooks/useGetUserInfo";
+import { parse } from "postcss";
 const ProductDetails = () => {
   const itemId = useParams();
   console.log(itemId.id);
   const [quantity, setQuantity] = useState(1);
   const [details, itemRefetch, isLoading] = useProductDetails(itemId.id);
+  const [,, reloadCart] = useGetCart()
+  const navigate = useNavigate()
+  const[userInfo, refetch, ] = useGetUserInfo()
+  const axiosSecure = useAxiosSecure()
   const productUrl = window.location.href;
   console.log(details);
-  const handleAddToCart = (item)=>{
+
+  if(quantity < 1){
+    setQuantity(1);
+    Swal.fire({
+      position: "center",
+      icon: "error",
+      title: "Can't select less than 1",
+      showConfirmButton: false,
+      timer: 1500,
+    });
+  }
+
+   const handleAddToCart = (item) => {
     if(item.stock < quantity){
       Swal.fire({
         position: "center",
@@ -26,8 +46,60 @@ const ProductDetails = () => {
         showConfirmButton: false,
         timer: 1500,
       });
+    }else{
+      if(userInfo?.role){
+        if(userInfo?.role === 'customer'){
+            const cartData = {
+              email: userInfo.email,
+              itemId : item._id,
+              itemName: item.name,
+              itemPrice: item.price.present_price,
+              itemImage: item.picture,
+              quantity: quantity,
+              totalPrice: parseInt(item?.price?.present_price) * parseInt(quantity),
+            }
+            axiosSecure.post('/addToCart', cartData)
+            .then(res=>{
+              if(res.data.insertedId){
+                Swal.fire({
+                  position: "center",
+                  icon: "success",
+                  title: "Added To Cart",
+                  showConfirmButton: false,
+                  timer: 2500,
+                });
+                reloadCart()
+              }
+            })
+        }else{
+          Swal.fire({
+            position: "center",
+            icon: "error",
+            title: "Admin and Seller Cannot Add To Cart",
+            showConfirmButton: false,
+            timer: 2500,
+          });
+        }
+      }else{
+        Swal.fire({
+          title: "Login Required",
+          text: "You need to login first!",
+          icon: "error",
+          showCancelButton: true,
+          confirmButtonColor: "#3085d6",
+          cancelButtonColor: "#d33",
+          confirmButtonText: "Login"
+        }).then((result) => {
+          if (result.isConfirmed) {
+            navigate('/login', { replace: true });
+          }
+        });
+      }
     }
-  }
+     
+      console.log(item)
+    }
+
   const shareOnFacebook = () => {
     const facebookUrl = `https://www.facebook.com/sharer/sharer.php?u=${encodeURIComponent(productUrl)}`;
     window.open(facebookUrl, '_blank');
@@ -63,8 +135,8 @@ const shareOnWhatsApp = () => {
   return (
     <div className="pt-[3%] px-[3%]">
       <h1 className="text-3xl text-center font-semibold">Product Details</h1>
-      <div className="flex justify-center items-start gap-5 pt-10">
-        <div className="flex flex-col justify-center items-center gap-5 w-1/2">
+      <div className="flex flex-col lg:flex-row justify-center items-center md:items-start gap-5 pt-10">
+        <div className="flex flex-col justify-center items-center gap-5 md:w-1/2">
           <img
             className="h-[300px] rounded-lg shadow-lg"
             src={details?.picture}
@@ -74,7 +146,7 @@ const shareOnWhatsApp = () => {
 
           </div>
         </div>
-        <div className="w-1/2">
+        <div className="md:w-1/2">
           <div className="flex flex-col justify-start items-start gap-4">
           <h1 className="text-3xl font-bold">{details?.name}</h1>
             <div className="flex justify-start items-center gap-2">
@@ -129,7 +201,7 @@ const shareOnWhatsApp = () => {
           </div>
         </div>
       </div>
-      <div className="grid grid-cols-2 gap-10 pt-10">
+      <div className="grid md:grid-cols-2 gap-10 pt-10">
         <div className="bg-yellow-50 px-[2%] py-[3%]">
           <h1 className="text-2xl font-semibold border-b-2 w-[60%] pb-2">Description</h1>
           <p className="text-justify px-[2%]">{details?.description}</p>
