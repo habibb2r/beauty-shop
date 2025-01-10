@@ -87,7 +87,7 @@ const DasboardNavbar = () => {
         ) : (
           <>
             <div className="w-full mx-auto flex justify-center items-center">
-              <div className="flex justify-center items-center gap-2 md:gap-5 px-2 md:px-5 py-2 md:py-3 bg-slate-200  mx-auto rounded-lg">
+              <div className="flex flex-wrap justify-center items-center gap-5 px-2 md:px-5 py-2 md:py-3 bg-slate-200  mx-auto rounded-lg">
                 <NavLink
                   className={({ isActive }) =>
                     `shadow-lg shadow-slate-500 rounded-md font-semibold text-sm px-2 md:px-4 py-2 md:py-3 ${
@@ -116,6 +116,16 @@ const DasboardNavbar = () => {
                   }
                 >
                   WishList
+                </NavLink>
+                <NavLink
+                  to="/dashboard/orders"
+                  className={({ isActive }) =>
+                    `shadow-lg shadow-slate-500 rounded-md font-semibold text-sm px-2 md:px-4 py-2 md:py-3 ${
+                      isActive ? "bg-slate-800 text-white" : ""
+                    }`
+                  }
+                >
+                  My Orders
                 </NavLink>
                 <Link
                   to="/"

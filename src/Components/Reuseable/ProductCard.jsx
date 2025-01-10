@@ -78,9 +78,9 @@ const ProductCard = ({product}) => {
             <div className="md:w-full flex justify-center relative">
             <img className="h-[300px] rounded-md " src={product?.picture} alt={product?.name} />
             <p className="text-primary absolute px-3 py-2 bg-white rounded-lg font-semibold bottom-[20%] right-[15%] shadow-lg">
-               ${product?.price?.present_price}
+               {product?.price?.present_price}tk
               {product?.price?.onOffer && (
-                <span className="line-through px-2 text-error"> ${product?.price?.previous_price}</span>
+                <span className="line-through px-2 text-error"> ${product?.price?.previous_price}tk</span>
               )}
             </p>
             </div>

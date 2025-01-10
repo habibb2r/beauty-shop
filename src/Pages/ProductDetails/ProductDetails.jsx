@@ -13,6 +13,7 @@ import useGetCart from "../../Hooks/User/useGetCart";
 import useAxiosSecure from "../../Hooks/CommonHooks/useAxiosSecure";
 import useGetUserInfo from "../../Hooks/CommonHooks/useGetUserInfo";
 import { parse } from "postcss";
+import SectionTitle from "../../Components/Reuseable/SectionTitle";
 const ProductDetails = () => {
   const itemId = useParams();
   console.log(itemId.id);
@@ -133,8 +134,9 @@ const shareOnWhatsApp = () => {
 };
 
   return (
-    <div className="pt-[3%] px-[3%]">
-      <h1 className="text-3xl text-center font-semibold">Product Details</h1>
+    <div className="px-[3%]">
+      <SectionTitle title={"Product Details"}></SectionTitle>
+  
       <div className="flex flex-col lg:flex-row justify-center items-center md:items-start gap-5 pt-10">
         <div className="flex flex-col justify-center items-center gap-5 md:w-1/2">
           <img
@@ -152,10 +154,10 @@ const shareOnWhatsApp = () => {
             <div className="flex justify-start items-center gap-2">
               <h1 className="text-2xl font-bold">Price:</h1>
               <h1 className="text-2xl font-bold line-through text-error">
-                ${details?.price.previous_price}
+                {details?.price.previous_price}TK
               </h1>
               <h1 className="text-2xl font-bold">
-                ${details?.price.present_price}
+                ${details?.price.present_price}TK
               </h1>
             </div>
             <div className="flex items-center gap-5">
