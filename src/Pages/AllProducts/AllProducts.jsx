@@ -4,6 +4,7 @@ import useAxiosSecure from '../../Hooks/CommonHooks/useAxiosSecure';
 import { useQuery } from '@tanstack/react-query';
 
 import ProductCard from '../../Components/Reuseable/ProductCard';
+import Loading from '../../Components/Reuseable/Loading';
 
 const AllProducts = () => {
   const [filter, setFilter] = useState("All");
@@ -74,9 +75,7 @@ const AllProducts = () => {
         </button>
       </form>
       {
-        loadItems ? <div className='flex justify-center px-5 py-10'>
-            <span className="loading loading-spinner loading-lg text-center"></span>          
-        </div> : <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-5">
+        loadItems ? <Loading></Loading> : <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-5">
         {allItems?.results?.map((product, index) => (
           <ProductCard key={index} product={product} />
         ))}

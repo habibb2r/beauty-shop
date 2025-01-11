@@ -2,6 +2,7 @@
 import { Navigate, useLocation } from "react-router-dom";
 import useAuth from "../Hooks/CommonHooks/useAuth";
 import useGetUserInfo from "../Hooks/CommonHooks/useGetUserInfo";
+import Loading from "../Components/Reuseable/Loading";
 
 
 
@@ -10,8 +11,8 @@ const SellerRoute = ({children}) => {
     const location = useLocation()
     const [userInfo, refetch, isLoading] = useGetUserInfo()
 
-    if(loading){
-        return <div className="loading loading-spinner loading-lg mx-auto"></div>
+    if(loading && isLoading){
+        return <Loading></Loading>
     }
 
     if(user){

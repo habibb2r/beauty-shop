@@ -1,3 +1,4 @@
+import Loading from "../../../../Components/Reuseable/Loading";
 import SectionTitle from "../../../../Components/Reuseable/SectionTitle";
 import WelComeDashboard from "../../../../Components/Reuseable/WelComeDashboard";
 import useGetUserInfo from "../../../../Hooks/CommonHooks/useGetUserInfo";
@@ -9,7 +10,7 @@ const UserHome = () => {
       <SectionTitle title={"User Home"}></SectionTitle>
 
       {isLoading ? (
-        <div className="loading loading-spinner loading-lg"></div>
+        <Loading></Loading>
       ) : (
         <WelComeDashboard user={userInfo}></WelComeDashboard>
       )}

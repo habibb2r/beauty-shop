@@ -14,6 +14,7 @@ import useAxiosSecure from "../../Hooks/CommonHooks/useAxiosSecure";
 import useGetUserInfo from "../../Hooks/CommonHooks/useGetUserInfo";
 import { parse } from "postcss";
 import SectionTitle from "../../Components/Reuseable/SectionTitle";
+import Loading from "../../Components/Reuseable/Loading";
 const ProductDetails = () => {
   const itemId = useParams();
   console.log(itemId.id);
@@ -136,8 +137,9 @@ const shareOnWhatsApp = () => {
   return (
     <div className="px-[3%]">
       <SectionTitle title={"Product Details"}></SectionTitle>
-  
-      <div className="flex flex-col lg:flex-row justify-center items-center md:items-start gap-5 pt-10">
+      {
+        isLoading ? <Loading></Loading> : <div>
+          <div className="flex flex-col lg:flex-row justify-center items-center md:items-start gap-5 pt-10">
         <div className="flex flex-col justify-center items-center gap-5 md:w-1/2">
           <img
             className="h-[300px] rounded-lg shadow-lg"
@@ -217,6 +219,9 @@ const shareOnWhatsApp = () => {
           </div>
         </div>
       </div>
+        </div>
+      }
+      
     </div>
   );
 };

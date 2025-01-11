@@ -5,6 +5,7 @@ import SectionTitle from "../../../../Components/Reuseable/SectionTitle";
 import useAxiosSecure from "../../../../Hooks/CommonHooks/useAxiosSecure";
 import useViewAllItems from "../../../../Hooks/Seller/useViewAllItems";
 import { Link } from "react-router-dom";
+import Loading from "../../../../Components/Reuseable/Loading";
 
 const ManageItems = () => {
   const [viewItems, refetchAllItems, loadItems] = useViewAllItems();
@@ -50,7 +51,7 @@ const ManageItems = () => {
           </thead>
           <tbody>
             {loadItems ? (
-              <div className="loading loading-spinner loading-lg flex justify-center"></div>
+              <Loading></Loading>
             ) : (
               ""
             )}

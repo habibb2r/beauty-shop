@@ -6,6 +6,7 @@ import downgrade from '../../../../assets/basic-icons/level-down.png';
 import deleteimg from '../../../../assets/basic-icons/delete.png'
 import Swal from 'sweetalert2';
 import useAxiosSecure from '../../../../Hooks/CommonHooks/useAxiosSecure';
+import Loading from '../../../../Components/Reuseable/Loading';
 
 
 const ManageUser = () => {
@@ -82,7 +83,7 @@ const ManageUser = () => {
           </thead>
           <tbody>
             {
-                isLoading ? <div className='loading loading-spinner loading-lg flex justify-center'></div> : ''
+                isLoading ? <Loading></Loading> : ''
             }
             {
                 manageUsers.map(user=> <tr key={user._id}>
