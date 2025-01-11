@@ -1,5 +1,4 @@
 import Lottie from "lottie-react";
-import bannerimg from "./hb2r.webp";
 import ani from "../../assets/homeani.json";
 import { motion } from "motion/react";
 import Typewriter from "typewriter-effect";

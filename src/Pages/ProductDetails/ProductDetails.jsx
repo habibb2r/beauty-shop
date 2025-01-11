@@ -156,10 +156,10 @@ const shareOnWhatsApp = () => {
             <div className="flex justify-start items-center gap-2">
               <h1 className="text-2xl font-bold">Price:</h1>
               <h1 className="text-2xl font-bold line-through text-error">
-                {details?.price.previous_price}TK
+                {details?.price.previous_price}
               </h1>
               <h1 className="text-2xl font-bold">
-                ${details?.price.present_price}TK
+                {details?.price.present_price}TK
               </h1>
             </div>
             <div className="flex items-center gap-5">
@@ -177,7 +177,7 @@ const shareOnWhatsApp = () => {
             </div>
 
             <div>
-              <p className="font-semibold text-xl">In Stock: <span className="font-bold">{details?.stock}</span></p>
+              <p className="font-semibold text-xl">In Stock: <span className="font-bold">{details?.stock}</span> Left</p>
             </div>
 
             <div className="flex items-center gap-5">
