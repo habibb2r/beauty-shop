@@ -11,7 +11,7 @@ const FeaturedProducts = () => {
         <div className="">
               <SectionTitle title={"Featured Products"}></SectionTitle>
               {
-                isLoading? <Loading></Loading> : <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-5  mx-auto px-[8%]">
+                isLoading? <Loading></Loading> : <div className="grid md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-5  mx-auto px-[8%]">
                 {
                      featured.map(product=>
                         <ProductCard key={product._id} product={product}></ProductCard>

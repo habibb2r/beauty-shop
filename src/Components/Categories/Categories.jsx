@@ -8,7 +8,7 @@ const Categories = () => {
     return (
         <div>
               <SectionTitle title={"Categories"}></SectionTitle>
-              <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-5 px-[10%]">
+              <div className="flex flex-wrap justify-center items-center gap-5 md:gap-7 lg:gap-10 xl:gap-16 px-[10%]">
                 <div className="relative">
                     <h1 className="font-semibold text-xl bg-white shadow-xl shadow-accent px-3 py-2 rounded-xl absolute bottom-[5%] right-[5%] md:bottom-[15%] md:right-[12%]">Skin Care</h1>
                     <img className="md:h-[300px] md:w-[250px] rounded-md shadow-2xl"  src={cat1} alt="" />

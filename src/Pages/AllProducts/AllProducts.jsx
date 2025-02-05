@@ -46,7 +46,7 @@ const AllProducts = () => {
   };
 
   return (
-    <div className='px-5 pb-10'>
+    <div className='px-[5%] pb-10'>
       <SectionTitle title={"All Products"} />
       <div className="flex flex-col md:flex-row justify-center items-center gap-5 mb-5">
         <select className='select select-secondary font-semibold' onChange={handleFilter} value={activeCategory}>
@@ -75,7 +75,7 @@ const AllProducts = () => {
         </button>
       </form>
       {
-        loadItems ? <Loading></Loading> : <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-5">
+        loadItems ? <Loading></Loading> : <div className="grid md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-5">
         {allItems?.results?.map((product, index) => (
           <ProductCard key={index} product={product} />
         ))}
