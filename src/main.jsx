@@ -9,13 +9,16 @@ import {
   QueryClient,
   QueryClientProvider,
 } from "@tanstack/react-query";
+import { Provider } from 'react-redux'
+import { store } from './Redux/store.js'
 
 const queryClient = new QueryClient();
 
 
 createRoot(document.getElementById('root')).render(
   <StrictMode>
-     <AuthProvider>
+    <Provider store={store}>
+    <AuthProvider>
      <QueryClientProvider client={queryClient}>
      <div className='mx-auto'>
      <RouterProvider router={router} />
@@ -23,6 +26,7 @@ createRoot(document.getElementById('root')).render(
      </QueryClientProvider>
     
      </AuthProvider>
+    </Provider>
     
   </StrictMode>,
 )
