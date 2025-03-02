@@ -24,6 +24,7 @@ import UpdateItem from "../Pages/DashBoardPages/Seller/UpdateItem/UpdateItem";
 import SellerHome from "../Pages/DashBoardPages/Seller/SellerHome/SellerHome";
 import ProductDetails from "../Pages/ProductDetails/ProductDetails";
 import MyOrders from "../Pages/DashBoardPages/User/MyOrders/MyOrders";
+import ETC from "../Pages/ETC/ETC";
 
 export const router = createBrowserRouter([
   {
@@ -33,6 +34,10 @@ export const router = createBrowserRouter([
       {
         path: "/",
         element: <Home></Home>,
+      },
+      {
+        path: "/etc",
+        element: <ETC></ETC>,
       },
       {
         path: "/about",
